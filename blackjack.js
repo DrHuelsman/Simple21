@@ -107,7 +107,6 @@ var card_deck = create_deck();
 shuffle(card_deck);
 var player_hand = [card_deck.pop(), card_deck.pop()];
 var dealer_hand = [card_deck.pop(), card_deck.pop()];
-var current_info = [get_hand_value(player_hand)];
 var hand_resolved = false;
 
 //Methods for running Blackjack
@@ -147,6 +146,7 @@ function new_hand(){
     dealer_hand = [card_deck.pop(), card_deck.pop()];
     update_player();
     update_dealer();
+    current_info = [get_hand_value(player_hand)];
     hand_resolved = false;
 }
 
