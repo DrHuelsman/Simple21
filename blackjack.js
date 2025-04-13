@@ -132,7 +132,7 @@ function update_player(){
 function update_history(){
     var history_string = "";
     for(let i = 0;i < play_history.length;i+=2){
-        history_string = "<p>" + play_history[i][0] + ": " + play_history[i][1] + " -> " + play_history[i][2] + "\n";
+        history_string += "<p>" + play_history[i][0] + ": " + play_history[i][1] + " -> " + play_history[i][2] + "\n";
     }
     document.getElementById("play-history").innerHTML = history_string;
 }
