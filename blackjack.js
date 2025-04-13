@@ -1,6 +1,6 @@
 const VALUE_IDX = 0;
 const SUIT_IDX = 1;
-const SUIT_NAMES = ["Hearts", "Clubs", "Diamonds", "Spades"];
+const SUIT_NAMES = ["hearts", "clubs", "diamonds", "spades"];
 const PLAY_HISTORY_LENGTH = 30;
 
 // Random functionality needed
@@ -54,19 +54,19 @@ function get_hand_value(hand){
 
 function value_str(card){
     if(card[VALUE_IDX] == 1){
-        return "Ace";
+        return "ace";
     }
     if(card[VALUE_IDX] < 11){
         return card[VALUE_IDX].toString();
     }
     if(card[VALUE_IDX] == 11){
-        return "Jack";
+        return "jack";
     }
     if(card[VALUE_IDX] == 12){
-        return "Queen";
+        return "queen";
     }
     if(card[VALUE_IDX] == 13){
-        return "King";
+        return "king";
     }
 }
 
