@@ -166,6 +166,8 @@ function hit_player(){
 }
 
 function resolve(stay=true){
+    if(hand_resolved)
+        return;
     hand_resolved = true;
     if(stay)
         current_info.push("Stay");
