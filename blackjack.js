@@ -1,7 +1,7 @@
 const VALUE_IDX = 0;
 const SUIT_IDX = 1;
 const SUIT_NAMES = ["hearts", "clubs", "diamonds", "spades"];
-const PLAY_HISTORY_LENGTH = 24;
+const PLAY_HISTORY_LENGTH = 23;
 
 // Random functionality needed
 function get_rand_int(min, max){
@@ -108,6 +108,7 @@ shuffle(card_deck);
 var player_hand = [card_deck.pop(), card_deck.pop()];
 var dealer_hand = [card_deck.pop(), card_deck.pop()];
 var hand_resolved = false;
+var show_history = false;
 
 //Methods for running Blackjack
 
@@ -129,11 +130,23 @@ function update_player(){
 }
 
 function update_history(){
+    if(!show_history)
+        return;
     var history_string = "";
     for(let i = 0;i < play_history.length;i+=1){
         history_string += "<div class=\"col s1\"><p>" + play_history[i][0] + ": " + play_history[i][1] + " &rarr; " + play_history[i][2] + "</p></div>\n";
     }
     document.getElementById("play-history").innerHTML = history_string;
+}
+
+function toggle_history(){
+    show_history = !show_history
+    if(show_history){
+        update_history();
+    }
+    else{
+        document.getElementById("play-history").innerHTML = "";
+    }
 }
 
 //Initial setup
