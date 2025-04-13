@@ -1,7 +1,7 @@
 const VALUE_IDX = 0;
 const SUIT_IDX = 1;
 const SUIT_NAMES = ["hearts", "clubs", "diamonds", "spades"];
-const PLAY_HISTORY_LENGTH = 30;
+const PLAY_HISTORY_LENGTH = 24;
 
 // Random functionality needed
 function get_rand_int(min, max){
@@ -130,8 +130,8 @@ function update_player(){
 
 function update_history(){
     var history_string = "";
-    for(let i = 0;i < play_history.length;i+=2){
-        history_string += "<p>" + play_history[i][0] + ": " + play_history[i][1] + " -> " + play_history[i][2] + "\n";
+    for(let i = 0;i < play_history.length;i+=1){
+        history_string += "<div class=\"col s1\"><p>" + play_history[i][0] + ": " + play_history[i][1] + " &rarr; " + play_history[i][2] + "</p></div>\n";
     }
     document.getElementById("play-history").innerHTML = history_string;
 }
@@ -142,6 +142,7 @@ function new_hand(){
     if(card_deck.length < 30){
         card_deck = create_deck();
     }
+    shuffle(card_deck);
     player_hand = [card_deck.pop(), card_deck.pop()];
     dealer_hand = [card_deck.pop(), card_deck.pop()];
     update_player();
@@ -160,13 +161,16 @@ function hit_player(){
     current_info.push(get_hand_value(player_hand));
     update_player();
     if(get_hand_value(player_hand) > 21){
-        resolve();
+        resolve(false);
     }
 }
 
-function resolve(){
+function resolve(stay=true){
     hand_resolved = true;
-    current_info.push("Stay");
+    if(stay)
+        current_info.push("Stay");
+    else
+        current_info.pop();
     while(get_hand_value(dealer_hand) <= 16){
         dealer_hand.push(card_deck.pop());
     }
@@ -191,6 +195,8 @@ function resolve(){
     for(let i = 0;i < current_info.length;i+=2){
         play_history.push([current_info[i], current_info[i+1], result]);
     }
+    console.log(current_info);
+    console.log(play_history);
     while(play_history.length > PLAY_HISTORY_LENGTH){
         play_history.shift();
     }

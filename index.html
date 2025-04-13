@@ -1,25 +1,36 @@
 <document>
-    <body>
-        <p>
-            <h3>Dealer:</h3>
+    <head>
+        <!-- Compiled and minified CSS -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+        <!-- Compiled and minified JavaScript -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    </head>
+    <body class="green lighten-2">
+        <div class="center-align">
             <p>
-                <div id="dealer-hand"></div>
-                <div id="dealer-value"></div>
+                <h3>Dealer:</h3>
+                <p>
+                    <div id="dealer-hand"></div>
+                    <div id="dealer-value"></div>
+                </p>
             </p>
-        </p>
-        <p>
+        </div>
+        <div class="center-align">
             <h3>Your Hand:</h3>
             <p>
                 <div id="player-hand"></div>
                 <div id="player-value"></div>
             </p>
-        </p>
-        <script src="blackjack.js"></script>
-        <button onclick="hit_player()">Hit</button>
-        <button onclick="resolve()">Stay</button>
-        <p>
-            <p>Hand Value: Action -> Result</p>
+        </div>
+        <div class="center-align">
+            <script src="blackjack.js"></script>
+            <button class="waves-effect waves-light btn-large green darken-3" onclick="hit_player()">Hit</button>
+            <button class="waves-effect waves-light btn-large red darken-3" onclick="resolve()">Stay</button>
+        </div>
+        <div class="row">
+            <div class="col s12"><h5>Hand Value: Action &rarr; Result</h5></div>
             <div id="play-history"></div>
-        </p>
+        </div>
     </body>
 </document>
